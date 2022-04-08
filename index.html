@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+
+</head>
+
+<body id="body">
+
+    <head>
+        <div class="flex-container nav-head">
+            <div>
+                <span class="opacityFade">Link</span>
+                <img class="search" id='searchImg' width="20px" src="./assets/search.svg" alt="">
+                <span id="searchSpan">
+                    <input class="searchInput" id="searchInput" type="text">
+                    <img class="googleSvg" src="./assets/google.svg" alt="">
+                </span>
+              
+            </div>
+            <div class="flex-container-column">
+                <img class='add class="opacityFade' width="20px" src="./assets/plus.svg" alt="">
+                <span class="opacityFade">add</span>
+            </div>
+        </div>
+
+        <div class="timeInputContainer">
+            <div class="timeCOntainer">
+                <span id="time">HH:mm</span><span id="amPm">AM/PM</span>
+            </div>
+            <div >
+                <span id="greetings"></span> <span id="nameGreet"></span>
+            </div>
+            <div><form><input id='nameinput' type="text"><button id="submitName" type="submit">submit</button></form></div>
+            <div>
+                <h1>
+                    whats your focus todays
+                </h1>
+                <input type="text">
+            </div>
+        </div>
+    </head>
+    <script src="helper.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
