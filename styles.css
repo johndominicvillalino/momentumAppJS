@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    opacity: 0;
+}
+
 body {
     height: 100vh;
     width: 100wv;
@@ -62,20 +66,26 @@ body {
     outline: none;
 }
 
+
+
 .googleSvg {
     top:23;
 left: 320px;
 }
 
-.nav-head img {
+.filterWhite {
     filter: invert(99%) sepia(22%) saturate(446%) hue-rotate(182deg) brightness(118%) contrast(100%);
 }
 
 #searchSpan {
     opacity: 0;
-   
+    transition: opacity .40s;
 }
-  
+
+#searchSpan:hover {
+    opacity: .5;
+}
+
 .timeInputContainer {
     display: flex;
     align-items: center;
@@ -101,7 +111,65 @@ left: 320px;
     font-size: 2vw;
 }
 
-html {
+
+
+#linkCard {
+    position: absolute;
+    background-color: #fff;
+    color: #797878;
+    padding: 20px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 300px;
+    left: 25px;
+}
+
+.filterGray {
+    filter: invert(49%) sepia(8%) saturate(8%) hue-rotate(356deg) brightness(94%) contrast(82%);
+}
+
+
+.width20 {
+    width: 20px;
+}
+li {
+    list-style-type: none;
+}
+
+#linkCard {
     opacity: 0;
+}
+
+#linkCard > ul {
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#linkCard > ul > li,  #linkCard > ul > div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+#linkCard::after {
+    content: " ";
+    width: 40px !important;
+    height: 40px;
+    background-color: red;
+    display: block;
+    transform: skew(15deg);
+    border-radius: 5px ;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -5px;
+    left: 5;
+    z-index: -5;
+    background-color: #fff;
+}
+
+#linkNav {
+    cursor: pointer;
 }
 

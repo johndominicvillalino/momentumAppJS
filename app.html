@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Apps</title>
+</head>
+<style>
+    #body {
+     
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<body id="body">
+    
+</body>
+<script>
+
+const body = document.getElementById('body')
+
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+
+let page = params.page; 
+
+if(page === 'apps' ) {
+    body.style.backgroundImage = 'url(./assets/chrome.png)'
+   
+} else {
+    body.style.backgroundImage = 'url(./assets/apps.png)'
+}
+
+
+
+</script>
+</html>
