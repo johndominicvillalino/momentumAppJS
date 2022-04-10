@@ -45,12 +45,11 @@ dom.addEventListener("DOMContentLoaded", (e) => {
   const dateForm = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
   dueDate.value = dateForm;
 
-  const focusStorage = storage.getItem('focus');
+  const focusStorage = storage.getItem("focus");
 
-  if(focusStorage) {
-    checkFocus()
+  if (focusStorage) {
+    checkFocus();
   }
-
 });
 
 //search input fade
@@ -271,9 +270,12 @@ taskCreate.addEventListener("click", (e) => {
   taskNameInput.style.borderBottom = "2px solid rgb(110, 110, 110)";
   taskNameInput.value = "";
 
+
+
   //trigger change
   const event = new Event("change");
   selectTaskSched.dispatchEvent(event);
+  taskState = {};
 });
 
 function taskTodoChange(e) {
@@ -323,36 +325,43 @@ selectTaskSched.addEventListener("change", (e) => {
 
   const filtered = tasks.filter((e) => {
     const t = Date.parse(e.dueDate);
-    const eMonth = new Date(t).getMonth() +1;
+    const eMonth = new Date(t).getMonth() + 1;
     const eDate = new Date(t).getDate();
     const eYear = new Date(t).getFullYear();
 
-    const tMonth = new Date().getMonth() +1;
+    const tMonth = new Date().getMonth() + 1;
     const tDate = new Date().getDate();
     const tYear = new Date().getFullYear();
 
-    if(filterTo == 'all') {
+    if (filterTo == "all") {
       return e;
-    } 
+    }
 
-    if(filterTo == 'overdue') {
-      if(eMonth < tMonth || (eMonth == tMonth && eDate < tDate) || eYear < tYear) {
+    if (filterTo == "overdue") {
+      if (
+        eMonth < tMonth ||
+        (eMonth == tMonth && eDate < tDate) ||
+        eYear < tYear
+      ) {
         return e;
       }
     }
 
-    if(filterTo == 'tomorrow') {
-      if(eMonth > tMonth || (eMonth == tMonth && eDate > tDate) || eYear > tYear) {
+    if (filterTo == "tomorrow") {
+      if (
+        eMonth > tMonth ||
+        (eMonth == tMonth && eDate > tDate) ||
+        eYear > tYear
+      ) {
         return e;
       }
     }
 
-    if(filterTo == 'today') {
-      if(eMonth == tMonth &&  eDate == tDate && eYear == tYear) {
-        return e
+    if (filterTo == "today") {
+      if (eMonth == tMonth && eDate == tDate && eYear == tYear) {
+        return e;
       }
     }
-
   });
 
   dom.querySelectorAll(".todoTasks").forEach((e) => {
@@ -388,57 +397,88 @@ todoSpan.addEventListener("click", (e) => {
   }
 });
 
-
 //focus
 
-const focusSpan = dom.getElementById('focusSpan')
-const focus = dom.querySelector('.focus')
+const focusSpan = dom.getElementById("focusSpan");
+const focus = dom.querySelector(".focus");
+let z = 0;
 
-focusInput.addEventListener('change', e => {
+if(storage.getItem("focus")) {
+  z = 1;
+}
 
-  const {value} = e.target
-  storage.setItem('focus',value)
-  const focusToday = storage.getItem('focus');
-  fadeOutFunc(focusSpan,5)
-  setTimeout(function(){
-    focusSpan.style.display ='none'
-    const div = dom.createElement('div')
-    div.setAttribute('id','focusToday') 
-    const input = dom.createElement('input')
-    input.setAttribute('type','checkbox')
-    input.setAttribute('id','focusCheck')
-    div.appendChild(input)
-    const span = dom.createElement('span')
+
+focusInput.addEventListener("change", (e) => {
+
+  const focusTodayDiv = dom.getElementById("focusToday");
+  const { value } = e.target;
+  storage.setItem("focus", value);
+  const focusToday = storage.getItem("focus");
+  fadeOutFunc(focusSpan, 5);
+  setTimeout(function () {
+    focusSpan.style.display = "none";
+    z += 1;
+   if (z !== 1) {
+     
+      focusTodayDiv.remove();
+    }
+    const div = dom.createElement("div");
+    div.setAttribute("id", "focusToday");
+    const input = dom.createElement("input");
+    input.setAttribute("type", "checkbox");
+    input.setAttribute("id", "focusCheck");
+    input.setAttribute("onchange", "checkFuncFocus()");
+    div.appendChild(input);
+    const span = dom.createElement("span");
+    span.setAttribute("id", "focusTaskSpan");
     span.innerText = focusToday;
     div.style.opacity = 0;
-    div.appendChild(span)
-    focus.appendChild(div)
-    const focusTodayId = dom.getElementById('focusToday')
-    fadeInFunc(focusTodayId,5)
-  },600)
-  
+    div.appendChild(span);
+    focus.appendChild(div);
 
-})
+    const focusTodayId = dom.getElementById("focusToday");
 
-function checkFocus () {
+    fadeInFunc(focusTodayId, 5);
+  }, 600);
 
-  const focusToday = storage.getItem('focus');
+  e.target.value = "";
+});
 
+function checkFocus() {
+  const focusToday = storage.getItem("focus");
 
-    focusSpan.style.display ='none'
-    const div = dom.createElement('div')
-    div.setAttribute('id','focusToday') 
-    const input = dom.createElement('input')
-    input.setAttribute('type','checkbox')
-    input.setAttribute('id','focusCheck')
-    div.appendChild(input)
-    const span = dom.createElement('span')
-    span.innerText = focusToday;
-    div.style.opacity = 0;
-    div.appendChild(span)
-    focus.appendChild(div)
-    const focusTodayId = dom.getElementById('focusToday')
-    focusTodayId.style.opacity = 1;
+  focusSpan.style.display = "none";
+  const div = dom.createElement("div");
+  div.setAttribute("id", "focusToday");
+  const input = dom.createElement("input");
+  input.setAttribute("type", "checkbox");
+  input.setAttribute("id", "focusCheck");
+  input.setAttribute("onchange", "checkFuncFocus()");
+  div.appendChild(input);
+  const span = dom.createElement("span");
+  span.setAttribute("id", "focusTaskSpan");
+  span.innerText = focusToday;
+  div.style.opacity = 0;
+  div.appendChild(span);
+  focus.appendChild(div);
+  const focusTodayId = dom.getElementById("focusToday");
+  focusTodayId.style.opacity = 1;
+}
 
-  
+function checkFuncFocus() {
+  const storedFocus = storage.getItem("focus");
+
+  const focusTaskSpan = dom.getElementById("focusTaskSpan");
+  const focusToday = dom.getElementById("focusToday");
+  const focusSpan = dom.getElementById("focusSpan");
+  focusTaskSpan.style.textDecoration = "line-through";
+  fadeOutFunc(focusToday, 5);
+  setTimeout(function () {
+    focusToday.style.display = "none";
+    storage.removeItem("focus");
+    focusToday.textContent = storedFocus;
+
+    focusSpan.style.display = "block";
+    fadeInFunc(focusSpan, 5);
+  }, 500);
 }
