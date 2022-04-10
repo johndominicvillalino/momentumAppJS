@@ -122,6 +122,10 @@ left: 320px;
     margin-top: 20px;
     width: 300px;
     left: 25px;
+    display: grid;
+    grid-template-columns: 100% 100%;
+
+    
 }
 
 .filterGray {
@@ -138,6 +142,7 @@ li {
 
 #linkCard {
     opacity: 0;
+    z-index: -20;
 }
 
 #linkCard > ul {
@@ -151,6 +156,7 @@ li {
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    
 }
 
 #linkCard::after {
@@ -164,7 +170,7 @@ li {
     transform: rotate(45deg);
     position: absolute;
     top: -5px;
-    left: 5;
+    left: 6px;
     z-index: -5;
     background-color: #fff;
 }
@@ -173,3 +179,186 @@ li {
     cursor: pointer;
 }
 
+
+.newLinkcard {
+    opacity: 0;
+    display:none;
+
+}
+
+.flex-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.deleteLink {
+    position: absolute;
+    right: 0;
+}
+
+.linkTop, .addTaskForm {
+    font-size: 15px;
+    font-weight: bold;
+    color:#797878;
+}
+
+.addTaskForm > * {
+    margin-bottom: 20px;
+}
+
+#formLinkCard > *  {
+    margin-bottom: 10px;
+}
+
+
+.linkTopInput {
+    border: 0;
+    border-bottom: 2px solid rgb(110, 110, 110);
+    padding: 2px;
+}
+.linkTopInput:focus {
+    outline: none;
+}
+
+#linkButton,#taskCreate {
+background-color: #fd7c40;
+border: none;
+padding: 5px 20px;
+border-radius: 20px;
+color: #fff;
+cursor: pointer;
+}
+#backCard {
+    cursor: pointer;
+}
+
+#greetings,#nameGreet {
+font-size: 4vw;
+    color: #fff;
+}
+
+#nameGreet {
+    background-color: transparent;
+    border: 0;
+    max-width: 200px;
+}
+#nameGreet:focus{
+    outline: none;
+}
+
+::placeholder {
+    font-size: 20px;
+  }
+
+  .addTodo {
+      position: absolute;
+      background-color: #fff;
+      right: 60px;
+      top:80px;
+      padding: 20px;
+      border-radius: 5px;
+    color: #000;
+    z-index: -20;
+    opacity: 0;
+  }
+
+  .addTodo::after {
+    content: " ";
+    width: 40px !important;
+    height: 40px;
+    display: block;
+    transform: skew(15deg);
+    border-radius: 5px ;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -5px;
+    right: 6px;
+    z-index: -5;
+    background-color: #fff;
+  }
+
+  .todoSection {
+      position: absolute;
+      right: 50px;
+      bottom:50px;
+      color: #fff;
+      font-size: 30px;
+  }
+
+  .taskCounter {
+      position: absolute;
+      bottom: 30px;
+      right: 0;
+
+      padding: 5px 10px;
+      border-radius: 50%;
+      font-size: 15px;
+  }
+
+  .todoCard {
+      position: absolute;
+      background-color: #fff;
+      color: black;
+    font-size: 25px;
+        bottom: 50px;
+        right: 10px;
+        border-radius: 10px;
+        width: 300px;
+        height: auto;
+        opacity: 0;
+        z-index: -20;
+
+    }
+
+    .todoCard > .innerTaskCardContainer {
+        padding: 20px 10px;
+        width: 100%;
+    }
+
+    .todoCardhead {
+        padding:  10px 20px;
+        
+        outline: none;
+    }
+
+    .todoCardhead > select {
+        border: 0;
+        font-size: 20px;
+    }
+    .todoCardhead > select:focus {
+        outline: none;
+    }
+
+    .todoCard::after {
+        content: " ";
+        width: 40px !important;
+        height: 40px;
+        display: block;
+        transform: skew(15deg);
+        border-radius: 5px ;
+        transform: rotate(45deg);
+        position: absolute;
+        bottom: -5px;
+        right: 6px;
+        z-index: -5;
+        background-color: #fff;
+      }
+
+      .todoCardhead {
+        border-bottom: 1px solid rgb(151, 150, 150);
+      }
+
+      .innerTaskCardContainer > li{
+          display:flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 5px;
+        justify-content: flex-end;
+      }
+
+
+      #addTaskButton,.todoSection {
+          cursor: pointer;
+      }

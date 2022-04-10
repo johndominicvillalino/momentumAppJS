@@ -18,18 +18,28 @@
                 <span class="" id="linkNav">Link</span>
                 <div id="linkCard">
                     <ul id="defaultSelection">
-                        <li id="chromeLink" class="linkCardClicks"> <img class='width20 filterGray' src="./assets/chrome.svg"> Chrome </li>
-                        <li id="appsLink" class="linkCardClicks"> <img class='width20 filterGray'src="./assets/apps.svg ">Apps</li>
-                    
-                    <div id="newLink">
-                        <img class='width20 filterGray'src="./assets/plusLink.svg" alt="">New Link
+                        <li id="chromeLink" class="linkCardClicks"> <img class='width20 filterGray'
+                                src="./assets/chrome.svg"> Chrome </li>
+                        <li id="appsLink" class="linkCardClicks"> <img class='width20 filterGray'
+                                src="./assets/apps.svg ">Apps</li>
+
+                        <div id="newLink">
+                            <img class='width20 filterGray' src="./assets/plusLink.svg" alt="">New Link
+                        </div>
+                    </ul>
+                    <div class="newLinkcard">
+                        <form id='formLinkCard' action="">
+                            <img id='backCard' class='width20' src="./assets/back.svg" alt="">
+                            <div class="linkTop">Name</div>
+                            <input id='nameOfLink' class='linkTopInput' type="text">
+                            <div class="linkTop">Link</div>
+                            <input placeholder='example.com' class='linkTopInput' id='linkToAdd' type="text">
+                            <div></div>
+                            <button type="submit" id="linkButton" > Create </button>
+                        </form>
                     </div>
-                </ul>
-                <div class="newLinkcard">
-                    test
                 </div>
-                </div>
-             
+
                 <img class="search filterWhite" id='searchImg' width="20px" src="./assets/search.svg" alt="">
                 <form action="" id="formSearchInput">
                     <span id="searchSpan">
@@ -40,8 +50,24 @@
 
             </div>
             <div class="flex-container-column">
-                <img class='add filterWhite' width="20px" src="./assets/plus.svg" alt="">
+                <img class='add filterWhite' id='addTaskButton'  width="20px" src="./assets/plus.svg" alt="">
                 <span class="opacityFade">add</span>
+                <div class='addTodo'>
+                    <form action="" class="addTaskForm">
+                        <div>
+                            Task Name
+                        </div>
+                        <input name='taskName' id='taskNameInput' type="text" class="taskClass linkTopInput">
+
+                        <div>
+                            Due Date
+                        </div>
+                        <input class='taskClass linkTopInput' id='dueDate' name='dueDate' type="date">
+                        <div>
+                            <button type="submit" id="taskCreate"> Create </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -50,9 +76,9 @@
                 <span id="time">HH:mm</span><span id="amPm">AM/PM</span>
             </div>
             <div>
-                <span id="greetings"></span> <span id="nameGreet"></span>
+                <span id="greetings"></span> <input placeholder='Your Name' id="nameGreet"></input>
             </div>
-            <div>
+            <div style="display:none">
                 <form><input id='nameinput' type="text"><button id="submitName" type="submit">submit</button></form>
             </div>
             <div>
@@ -63,7 +89,28 @@
             </div>
         </div>
 
+        
+        <div class="todoSection" id="todoSection">
+            <span id="todoSpan">ToDo</span>
+            <span class="taskCounter" id='taskCounter'></span>
+            <div class="todoCard">
+                <div class="todoCardhead">
+                    <select name="" id="selectTaskSched" >
+                        <option value="today">Today</option>
+                        <option value="tomorrow">Tomorrow</option>
+                        <option value="overdue">Overdue</option>
+                        <option selected='selected' value="all">All Tasks</option>
+                    </select>
+                </div>
+                <div class="innerTaskCardContainer">
+                 
+                 
+                </div>
+            </div>
+        </div>
 
+
+        
     </head>
     <script src="helper.js"></script>
     <script src="script.js"></script>
