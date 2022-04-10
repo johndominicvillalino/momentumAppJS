@@ -198,10 +198,11 @@ li {
     right: 0;
 }
 
-.linkTop, .addTaskForm {
+.linkTop, .addTaskForm, .todoCard, .innerTaskCardContainer{
     font-size: 15px;
     font-weight: bold;
     color:#797878;
+
 }
 
 .addTaskForm > * {
@@ -291,7 +292,7 @@ font-size: 4vw;
       position: absolute;
       bottom: 30px;
       right: 0;
-
+        z-index: 20;
       padding: 5px 10px;
       border-radius: 50%;
       font-size: 15px;
@@ -362,3 +363,33 @@ font-size: 4vw;
       #addTaskButton,.todoSection {
           cursor: pointer;
       }
+
+      .innerTaskCardContainer > li{
+        margin-bottom: 10px;
+      }
+
+      .focus {
+          color: #fff;
+      }
+
+      #focusInput {
+          font-size: 3vw;
+          background-color: transparent;
+          border: 0;
+          border-bottom: 2px solid #fff;
+          text-align: center;
+          color: #fff
+      }
+
+      #focusInput:focus  {
+          outline: none;
+      }
+
+      #focusToday {
+          font-size: 50px;
+      }
+      #focusCheck {
+          width: 50px;
+          height: 20px;
+      }
+      

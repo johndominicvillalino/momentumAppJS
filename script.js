@@ -43,8 +43,14 @@ dom.addEventListener("DOMContentLoaded", (e) => {
   //default task time
   let d = new Date();
   const dateForm = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
-
   dueDate.value = dateForm;
+
+  const focusStorage = storage.getItem('focus');
+
+  if(focusStorage) {
+    checkFocus()
+  }
+
 });
 
 //search input fade
@@ -381,3 +387,58 @@ todoSpan.addEventListener("click", (e) => {
     todoCard.style.zIndex = "1";
   }
 });
+
+
+//focus
+
+const focusSpan = dom.getElementById('focusSpan')
+const focus = dom.querySelector('.focus')
+
+focusInput.addEventListener('change', e => {
+
+  const {value} = e.target
+  storage.setItem('focus',value)
+  const focusToday = storage.getItem('focus');
+  fadeOutFunc(focusSpan,5)
+  setTimeout(function(){
+    focusSpan.style.display ='none'
+    const div = dom.createElement('div')
+    div.setAttribute('id','focusToday') 
+    const input = dom.createElement('input')
+    input.setAttribute('type','checkbox')
+    input.setAttribute('id','focusCheck')
+    div.appendChild(input)
+    const span = dom.createElement('span')
+    span.innerText = focusToday;
+    div.style.opacity = 0;
+    div.appendChild(span)
+    focus.appendChild(div)
+    const focusTodayId = dom.getElementById('focusToday')
+    fadeInFunc(focusTodayId,5)
+  },600)
+  
+
+})
+
+function checkFocus () {
+
+  const focusToday = storage.getItem('focus');
+
+
+    focusSpan.style.display ='none'
+    const div = dom.createElement('div')
+    div.setAttribute('id','focusToday') 
+    const input = dom.createElement('input')
+    input.setAttribute('type','checkbox')
+    input.setAttribute('id','focusCheck')
+    div.appendChild(input)
+    const span = dom.createElement('span')
+    span.innerText = focusToday;
+    div.style.opacity = 0;
+    div.appendChild(span)
+    focus.appendChild(div)
+    const focusTodayId = dom.getElementById('focusToday')
+    focusTodayId.style.opacity = 1;
+
+  
+}
