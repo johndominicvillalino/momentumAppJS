@@ -146,18 +146,48 @@ const checkLinkFunc = () => {
 
       appsLink.after(li);
     });
-  } catch (error) {}
+  } catch (error) { }
 };
+
+
+const quotes = [
+  "I accomplished great things without the support of people I needed to support me. I am proud of myself.",
+  "I don't judge poverty by wealth. The poor are those who cannot afford to pay attention in life.",
+  "Exception is one way of saying I can't",
+  "XML is the lazy refuge of cowards who fear writing parsers.",
+  "X Marks the spot",
+  "If Mahal ka ng nanay mo, then, you are loved!",
+  "Karma is accountability",
+  "Keeping silence doesn’t show the weakness! It shows the patience to forgive.",
+  "Machines can't be tempered but the top men controlling all operation can easily be influenced to favour anyone."
+
+]
+
+const quotesContainer = dom.getElementById('quotesContainer')
+const quotesContainerSpan = dom.getElementById('quotesContainerSpan')
+
+const showQuotes = () => {
+
+  let quoteArr = []
+  const quoteLen = quotes.length
+  const ran = Math.floor(Math.random() * quoteLen)
+  quoteArr.push(ran);
+  let quote;
+    fadeInFunc(quotesContainer,6)
+    quote = quotes[ran]
+    quoteArr = []
+    quotesContainerSpan.textContent = `"${quote}"`
+}
+
+
+showQuotes()
 
 const timeFunc = () => {
   let lastPerson = "";
 
   const amPmGlobal = new Date().getHours() >= 12 ? "PM" : "AM";
-
   const greetings = `Good ${amPmGlobal === "PM" ? "Evening," : "Morning,"}`;
-
   greet.textContent = greetings;
-
   const amPm = new Date().getHours() >= 12 ? "PM" : "AM";
   let hour =
     new Date().getHours() % 12 === 0
@@ -167,17 +197,21 @@ const timeFunc = () => {
   if (hour === 12) {
     hour = 12;
   }
-
   const minutes = new Date().getMinutes();
-  const date = `${hour < 10 ? "0" + hour : hour}:${
-    minutes < 10 ? "0" + minutes : minutes
-  }`;
+  const date = `${hour < 10 ? "0" + hour : hour}:${minutes < 10 ? "0" + minutes : minutes
+    }`;
 
   time.textContent = date;
   amPmGreet.textContent = amPm;
+
+
+
+
 };
 
 timeFunc();
+
+
 
 const backFunc = () => {
   let slideCount = 0;
@@ -210,22 +244,21 @@ const checkTask = () => {
     } else {
       taskCounter.style.background = "red";
       taskData.forEach((e) => {
-      
+
         const li = dom.createElement('li')
         li.textContent = e.taskName
         const input = dom.createElement('input')
-        li.setAttribute('class','todoTasks')
-        input.setAttribute('id',e.taskName)
-        input.setAttribute('onchange',`taskTodoChange('${e.taskName}')`)
-        input.setAttribute('type','checkbox')
+        li.setAttribute('class', 'todoTasks')
+        input.setAttribute('id', e.taskName)
+        input.setAttribute('onchange', `taskTodoChange('${e.taskName}')`)
+        input.setAttribute('type', 'checkbox')
         li.appendChild(input);
         innerTaskCardContainer.appendChild(li)
 
       });
     }
-  } catch (error) {}
+  } catch (error) { }
 
   taskCounter.textContent = tasks == 0 ? '' : tasks;
 };
-
 

@@ -1,8 +1,10 @@
 dom.addEventListener("DOMContentLoaded", (e) => {
   //fade in document
   fadeInFunc(html, 5);
-  //time
+  //time and quote
   setInterval(timeFunc, 1000);
+
+  setInterval(showQuotes, 10000);
 
   //load links
   checkLinkFunc();
@@ -482,3 +484,4 @@ function checkFuncFocus() {
     fadeInFunc(focusSpan, 5);
   }, 500);
 }
+

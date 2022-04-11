@@ -373,7 +373,7 @@ font-size: 4vw;
       }
 
       #focusInput {
-          font-size: 3vw;
+          font-size: 20px;
           background-color: transparent;
           border: 0;
           border-bottom: 2px solid #fff;
@@ -391,5 +391,11 @@ font-size: 4vw;
       #focusCheck {
           width: 50px;
           height: 20px;
+          
+      }
+      #quotesContainer {
+ 
+          font-size: 25px;
+          color: #fff
       }
       
