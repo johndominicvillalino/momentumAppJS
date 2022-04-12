@@ -398,4 +398,12 @@ font-size: 4vw;
           font-size: 25px;
           color: #fff
       }
+
+      #quotesContainerSpan {
+          padding: 5px 10px;
+      }
       
+      #addQuote {
+          cursor: pointer;
+          margin-right: 20px;
+      }

@@ -33,6 +33,7 @@ const todoSection = dom.getElementById("todoSection");
 const selectTaskSched = dom.getElementById("selectTaskSched");
 const innerTaskCardContainer = dom.querySelector('.innerTaskCardContainer')
 const dueDate = dom.getElementById('dueDate')
+const addQuote = dom.getElementById('addQuote')
 
 const linkState = {};
 

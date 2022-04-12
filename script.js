@@ -4,7 +4,7 @@ dom.addEventListener("DOMContentLoaded", (e) => {
   //time and quote
   setInterval(timeFunc, 1000);
 
-  setInterval(showQuotes, 10000);
+  const quote = setInterval(showQuotes, 10000);
 
   //load links
   checkLinkFunc();
@@ -52,7 +52,40 @@ dom.addEventListener("DOMContentLoaded", (e) => {
   if (focusStorage) {
     checkFocus();
   }
+
+  addQuote.addEventListener('click', () => {
+    clearInterval(quote)
+    quotesContainerSpan.setAttribute('contentEditable',true)
+    quotesContainerSpan.textContent = ''
+    quotesContainerSpan.focus()
+  })
+
 });
+
+
+
+const interVals = []
+
+quotesContainerSpan.addEventListener('focusin', () => {
+
+  if(interVals.length>0) {
+    const len = interVals.length -1
+    clearInterval(interVals[len])
+  }
+  console.log(interVals)
+
+})
+
+quotesContainerSpan.addEventListener('focusout', () => {
+  const changeVal = quotesContainerSpan.textContent
+  quotesContainerSpan.setAttribute('contentEditable',false)
+  quotes.push(changeVal);
+  const quoteTwo = setInterval(showQuotes, 10000);
+  interVals.push(quoteTwo)
+  console.log('focusout')
+  console.log(quotes)
+  
+})
 
 //search input fade
 searchIcon.addEventListener("mouseover", (e) => {
