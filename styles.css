@@ -402,6 +402,9 @@ font-size: 4vw;
       #quotesContainerSpan {
           padding: 5px 10px;
       }
+      #quotesContainerSpan {
+          outline:  none;
+      }
       
       #addQuote {
           cursor: pointer;

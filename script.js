@@ -72,7 +72,7 @@ quotesContainerSpan.addEventListener('focusin', () => {
     const len = interVals.length -1
     clearInterval(interVals[len])
   }
-  console.log(interVals)
+
 
 })
 
@@ -82,8 +82,7 @@ quotesContainerSpan.addEventListener('focusout', () => {
   quotes.push(changeVal);
   const quoteTwo = setInterval(showQuotes, 10000);
   interVals.push(quoteTwo)
-  console.log('focusout')
-  console.log(quotes)
+
   
 })
 
