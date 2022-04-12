@@ -25,7 +25,7 @@ dom.addEventListener("DOMContentLoaded", (e) => {
 
   //load name if exist and lock
   if (storage.getItem("name")) {
-    console.log(storage.getItem("name"));
+
     nameGreet.value = storage.getItem("name");
     nameGreet.readOnly = true;
   }
@@ -225,9 +225,9 @@ function openLink(el) {
     window.open(`https://google.com/search?q=${el}`, "_blank");
   }
 }
-//delete link
+//delete 
 function deleteLink(el) {
-  console.log(el);
+
   dom.querySelectorAll(".newLinkClass").forEach((e) => {
     if (e.textContent === el) {
       fadeOutFunc(e, 5);
@@ -290,7 +290,7 @@ taskCreate.addEventListener("click", (e) => {
   taskCounter.style.background = "red";
 
   const li = dom.createElement("li");
-  console.log(taskState);
+
   li.textContent = taskState.taskName;
   li.setAttribute("class", "todoTasks");
   const input = dom.createElement("input");
@@ -351,7 +351,7 @@ addTaskButton.addEventListener("click", (e) => {
 });
 
 selectTaskSched.addEventListener("change", (e) => {
-  console.log("test");
+
   const filterTo = e.target.value;
 
   let tasks = storage.getItem("tasks");
